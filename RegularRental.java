@@ -4,7 +4,7 @@ public class RegularRental extends Rental {
     }
 
     @Override
-    public double getRentalPrice() {
+    public double computeRentalPrice() {
         double amount = 2;
         if (getDaysRented() > 2) {
             amount += (getDaysRented() - 2) * 1.5;

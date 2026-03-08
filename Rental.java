@@ -1,9 +1,9 @@
 public abstract class Rental {
-    private final String movieTitle;
-    private int   _daysRented;
+    private final String _movieTitle;
+    private final int   _daysRented;
     
     public Rental(String movieTitle, int daysRented) {
-        this.movieTitle = movieTitle;
+        this._movieTitle = movieTitle;
         _daysRented = daysRented;
     }
     
@@ -12,10 +12,12 @@ public abstract class Rental {
     }
     
     public String getMovieTitle() {
-        return movieTitle;
+        return _movieTitle;
     }
 
-    public abstract double getRentalPrice();
+    public int computeFrequentRentalPoints() {
+        return 1;
+    }
 
-    public abstract int getFrequentRentalPointContribution();
+    public abstract double computeRentalPrice();
 }

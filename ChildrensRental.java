@@ -5,7 +5,7 @@ public class ChildrensRental extends Rental {
     }
 
     @Override
-    public double getRentalPrice() {
+    public double computeRentalPrice() {
         double amount = 1.5;
         if (this.getDaysRented() > 3) {
             amount += (this.getDaysRented() - 3) * 1.5;
