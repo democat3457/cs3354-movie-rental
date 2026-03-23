@@ -42,4 +42,21 @@ public class Customer {
         result.append("You earned ").append(frequentRenterPoints).append(" frequent renter points");
         return result.toString();
     }
+
+    public String generateXMLStatement() {
+        StringBuilder result = new StringBuilder("<statement>\n");
+        result.append("\t<name> ").append(getName()).append(" </name>\n");
+        
+        for (Rental rental : _rentals) {
+            result.append("\t<rental>\n");
+            result.append("\t\t<movie> ").append(rental.getMovieTitle()).append(" </movie>\n");
+            result.append("\t\t<price> ").append(rental.computeRentalPrice()).append(" </price>\n");
+            result.append("\t</rental>\n");
+        }
+        
+        result.append("\t<amountOwed> ").append(totalAmount).append(" </amountOwed>\n");
+        result.append("\t<frequentRenterPoints> ").append(frequentRenterPoints).append(" </frequentRenterPoints>\n");
+        result.append("</statement>\n");
+        return result.toString();
+    }
 }

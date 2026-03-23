@@ -1,6 +1,6 @@
 public abstract class Rental {
     private final String _movieTitle;
-    private final int   _daysRented;
+    private final int _daysRented;
     
     public Rental(String movieTitle, int daysRented) {
         this._movieTitle = movieTitle;
