@@ -16,13 +16,13 @@ public abstract class Rental {
     }
 
     public String getStringRepresentation() {
-        return this.getMovieTitle() + "\t$" + this.computeRentalPrice();
+        return getMovieTitle() + "\t$" + computeRentalPrice();
     }
 
     public String getXMLRepresentation() {
         return "<rental>\n" +
-                "\t<movie> " + this.getMovieTitle() + " </movie>\n" +
-                "\t<price> " + this.computeRentalPrice() + " </price>\n" +
+                "\t<movie> " + getMovieTitle() + " </movie>\n" +
+                "\t<price> " + computeRentalPrice() + " </price>\n" +
                 "</rental>";
     }
 
