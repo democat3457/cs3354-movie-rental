@@ -6,13 +6,13 @@ public class NewReleaseRental extends Rental {
 
     @Override
     public double computeRentalPrice() {
-        return this.getDaysRented() * 3;
+        return getDaysRented() * 3;
     }
 
     @Override
     public int computeFrequentRentalPoints() {
         int points = super.computeFrequentRentalPoints();
-        if (this.getDaysRented() > 1) {
+        if (getDaysRented() > 1) {
             points += 1;
         }
         return points;

@@ -3,7 +3,7 @@ public abstract class Rental {
     private final int _daysRented;
     
     public Rental(String movieTitle, int daysRented) {
-        this._movieTitle = movieTitle;
+        _movieTitle = movieTitle;
         _daysRented = daysRented;
     }
     
