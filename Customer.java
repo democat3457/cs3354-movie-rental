@@ -39,15 +39,13 @@ public class Customer {
             // show figures for this rental
             result
                     .append("\t")
-                    .append(rental.getMovieTitle())
-                    .append("\t")
-                    .append(rental.computeRentalPrice())
+                    .append(rental.getStringRepresentation())
                     .append("\n");
         }
         
         // add footer lines
-        result.append("Amount owed is ").append(_totalAmount).append("\n");
-        result.append("You earned ").append(_totalFrequentRenterPoints).append(" frequent renter points");
+        result.append("Amount owed is $").append(_totalAmount).append("\n");
+        result.append("You earned ").append(_totalFrequentRenterPoints).append(" frequent renter points!");
         return result.toString();
     }
 
@@ -56,10 +54,7 @@ public class Customer {
         result.append("\t<name> ").append(getName()).append(" </name>\n");
         
         for (Rental rental : _rentals) {
-            result.append("\t<rental>\n");
-            result.append("\t\t<movie> ").append(rental.getMovieTitle()).append(" </movie>\n");
-            result.append("\t\t<price> ").append(rental.computeRentalPrice()).append(" </price>\n");
-            result.append("\t</rental>\n");
+            result.append(rental.getXMLRepresentation()).append("\n");
         }
         
         result.append("\t<amountOwed> ").append(_totalAmount).append(" </amountOwed>\n");

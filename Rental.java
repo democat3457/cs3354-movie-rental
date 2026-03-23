@@ -15,6 +15,17 @@ public abstract class Rental {
         return _movieTitle;
     }
 
+    public String getStringRepresentation() {
+        return this.getMovieTitle() + "\t$" + this.computeRentalPrice();
+    }
+
+    public String getXMLRepresentation() {
+        return "<rental>\n" +
+                "\t<movie> " + this.getMovieTitle() + " </movie>\n" +
+                "\t<price> " + this.computeRentalPrice() + " </price>\n" +
+                "</rental>";
+    }
+
     public int computeFrequentRentalPoints() {
         return 1;
     }
