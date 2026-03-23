@@ -54,7 +54,10 @@ public class Customer {
         result.append("\t<name> ").append(getName()).append(" </name>\n");
         
         for (Rental rental : _rentals) {
-            result.append(rental.getXMLRepresentation()).append("\n");
+            String rentalXml = rental
+                    .getXmlRepresentation()
+                    .replaceAll("(?m)^", "\t");  // Add indentation to match statement indentation
+            result.append(rentalXml).append("\n");
         }
         
         result.append("\t<amountOwed> ").append(_totalAmount).append(" </amountOwed>\n");

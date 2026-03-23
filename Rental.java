@@ -19,7 +19,7 @@ public abstract class Rental {
         return getMovieTitle() + "\t$" + computeRentalPrice();
     }
 
-    public String getXMLRepresentation() {
+    public String getXmlRepresentation() {
         return "<rental>\n" +
                 "\t<movie> " + getMovieTitle() + " </movie>\n" +
                 "\t<price> " + computeRentalPrice() + " </price>\n" +
