@@ -1,3 +1,5 @@
+package entity;
+
 import java.util.ArrayList;
 
 public class Customer {
@@ -43,7 +45,7 @@ public class Customer {
     }
     
     public String generateStatement() {
-        StringBuilder result = new StringBuilder("Rental Record for " + getName() + "\n");
+        StringBuilder result = new StringBuilder("entity.Rental Record for " + getName() + "\n");
         
         for (Rental rental : _rentals) {
             // show figures for this rental

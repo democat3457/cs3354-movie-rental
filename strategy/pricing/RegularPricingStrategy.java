@@ -1,3 +1,6 @@
+package strategy.pricing;
+import entity.Rental;
+
 public class RegularPricingStrategy implements RentalPricingStrategy {
     public double computeRentalPrice(Rental rental) {
         double amount = 2;

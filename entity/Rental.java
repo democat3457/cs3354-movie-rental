@@ -1,3 +1,14 @@
+package entity;
+
+import strategy.frequentrentalpoint.CollegeAgeNewReleaseFrequentRentalPointStrategy;
+import strategy.frequentrentalpoint.FrequentRentalPointStrategy;
+import strategy.frequentrentalpoint.NewReleaseFrequentRentalPointStrategy;
+import strategy.frequentrentalpoint.RegularFrequentRentalPointStrategy;
+import strategy.pricing.ChildrensPricingStrategy;
+import strategy.pricing.NewReleasePricingStrategy;
+import strategy.pricing.RegularPricingStrategy;
+import strategy.pricing.RentalPricingStrategy;
+
 public class Rental {
     private final String _movieTitle;
     private final int _daysRented;

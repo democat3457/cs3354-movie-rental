@@ -1,3 +1,6 @@
+package strategy.pricing;
+import entity.Rental;
+
 public class ChildrensPricingStrategy implements RentalPricingStrategy {
     public double computeRentalPrice(Rental rental) {
         double amount = 1.5;

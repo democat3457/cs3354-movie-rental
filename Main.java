@@ -1,3 +1,6 @@
+import entity.Customer;
+import entity.Rental;
+
 public class Main {
     public static void main(String[] args) {
         Customer c = new Customer("Joe Doe");
