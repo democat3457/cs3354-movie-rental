@@ -9,7 +9,17 @@ public class Customer {
     public Customer(String name) {
         _name = name;
     }
-    
+
+    public void printStatements() {
+        System.out.println("----" + getName() + "'s Statement" + "----");
+        System.out.println("---Regular Statement---");
+        System.out.println(generateStatement());
+        System.out.println();
+        System.out.println("---XML Statement---");
+        System.out.println(generateXMLStatement());
+        System.out.println();
+    }
+
     public void addRental(Rental arg) {
         _rentals.add(arg);
         _totalAmount += arg.computeRentalPrice();
@@ -65,4 +75,6 @@ public class Customer {
         result.append("</statement>\n");
         return result.toString();
     }
+
+
 }

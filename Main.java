@@ -4,11 +4,10 @@ public class Main {
         c.addRental(Rental.createChildrensRental("Finding Nemo", 4));
         c.addRental(Rental.createNewReleaseRental("Iron Lung", 2));
         c.addRental(Rental.createRegularRental("Independence Day", 3));
+        c.printStatements();
 
-        System.out.println("---Regular Statement---");
-        System.out.println(c.generateStatement());
-        System.out.println();
-        System.out.println("---XML Statement---");
-        System.out.println(c.generateXMLStatement());
+        Customer c2 = new Customer("Colin Wong");
+        c2.addRental(Rental.createCollegeAgeNewReleaseRental("Project Hail Mary", 1));
+        c2.printStatements();
     }
 }

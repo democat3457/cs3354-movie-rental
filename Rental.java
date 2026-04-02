@@ -22,7 +22,11 @@ public class Rental {
     public static Rental createChildrensRental(String movieTitle, int daysRented) {
         return new Rental(movieTitle, daysRented, new ChildrensPricingStrategy(), new RegularFrequentRentalPointStrategy());
     }
-    
+
+    public static Rental createCollegeAgeNewReleaseRental(String movieTitle, int daysRented) {
+        return new Rental(movieTitle, daysRented, new ChildrensPricingStrategy(), new CollegeAgeNewReleaseFrequentRentalPointStrategy());
+    }
+
     public int getDaysRented() {
         return _daysRented;
     }
