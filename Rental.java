@@ -1,10 +1,26 @@
-public abstract class Rental {
+public class Rental {
     private final String _movieTitle;
     private final int _daysRented;
+    private final RentalPricingStrategy _pricingStrategy;
+    private final FrequentRentalPointStrategy _frequentRentalPointStrategy;
     
-    public Rental(String movieTitle, int daysRented) {
+    private Rental(String movieTitle, int daysRented, RentalPricingStrategy pricingStrategy, FrequentRentalPointStrategy frequentRentalPointStrategy) {
         _movieTitle = movieTitle;
         _daysRented = daysRented;
+        _pricingStrategy = pricingStrategy;
+        _frequentRentalPointStrategy = frequentRentalPointStrategy;
+    }
+
+    public static Rental createRegularRental(String movieTitle, int daysRented) {
+        return new Rental(movieTitle, daysRented, new RegularPricingStrategy(), new RegularFrequentRentalPointStrategy());
+    }
+
+    public static Rental createNewReleaseRental(String movieTitle, int daysRented) {
+        return new Rental(movieTitle, daysRented, new NewReleasePricingStrategy(), new NewReleaseFrequentRentalPointStrategy());
+    }
+
+    public static Rental createChildrensRental(String movieTitle, int daysRented) {
+        return new Rental(movieTitle, daysRented, new ChildrensPricingStrategy(), new RegularFrequentRentalPointStrategy());
     }
     
     public int getDaysRented() {
@@ -27,8 +43,10 @@ public abstract class Rental {
     }
 
     public int computeFrequentRentalPoints() {
-        return 1;
+        return _frequentRentalPointStrategy.computeFrequentRentalPoints(this);
     }
 
-    public abstract double computeRentalPrice();
+    public double computeRentalPrice() {
+        return _pricingStrategy.computeRentalPrice(this);
+    }
 }

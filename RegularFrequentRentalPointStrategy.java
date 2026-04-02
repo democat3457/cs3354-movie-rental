@@ -1,0 +1,2 @@
+public class RegularFrequentRentalPointStrategy implements FrequentRentalPointStrategy {
+}
