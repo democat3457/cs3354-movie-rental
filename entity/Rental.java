@@ -1,6 +1,5 @@
 package entity;
 
-import strategy.frequentrentalpoint.CollegeAgeNewReleaseFrequentRentalPointStrategy;
 import strategy.frequentrentalpoint.FrequentRentalPointStrategy;
 import strategy.frequentrentalpoint.NewReleaseFrequentRentalPointStrategy;
 import strategy.frequentrentalpoint.RegularFrequentRentalPointStrategy;
@@ -13,35 +12,43 @@ public class Rental {
     private final String _movieTitle;
     private final int _daysRented;
     private final RentalPricingStrategy _pricingStrategy;
-    private final FrequentRentalPointStrategy _frequentRentalPointStrategy;
-    
-    private Rental(String movieTitle, int daysRented, RentalPricingStrategy pricingStrategy, FrequentRentalPointStrategy frequentRentalPointStrategy) {
+    private FrequentRentalPointStrategy _frequentRentalPointStrategy;
+
+    private Rental(String movieTitle, int daysRented, RentalPricingStrategy pricingStrategy,
+            FrequentRentalPointStrategy frequentRentalPointStrategy) {
         _movieTitle = movieTitle;
         _daysRented = daysRented;
         _pricingStrategy = pricingStrategy;
         _frequentRentalPointStrategy = frequentRentalPointStrategy;
     }
 
+    public FrequentRentalPointStrategy getFrequentRentalPointStrategy() {
+        return _frequentRentalPointStrategy;
+    }
+
+    public void setFrequentRentalPointStrategy(FrequentRentalPointStrategy frequentRentalPointStrategy) {
+        _frequentRentalPointStrategy = frequentRentalPointStrategy;
+    }
+
     public static Rental createRegularRental(String movieTitle, int daysRented) {
-        return new Rental(movieTitle, daysRented, new RegularPricingStrategy(), new RegularFrequentRentalPointStrategy());
+        return new Rental(movieTitle, daysRented, new RegularPricingStrategy(),
+                new RegularFrequentRentalPointStrategy());
     }
 
     public static Rental createNewReleaseRental(String movieTitle, int daysRented) {
-        return new Rental(movieTitle, daysRented, new NewReleasePricingStrategy(), new NewReleaseFrequentRentalPointStrategy());
+        return new Rental(movieTitle, daysRented, new NewReleasePricingStrategy(),
+                new NewReleaseFrequentRentalPointStrategy());
     }
 
     public static Rental createChildrensRental(String movieTitle, int daysRented) {
-        return new Rental(movieTitle, daysRented, new ChildrensPricingStrategy(), new RegularFrequentRentalPointStrategy());
-    }
-
-    public static Rental createCollegeAgeNewReleaseRental(String movieTitle, int daysRented) {
-        return new Rental(movieTitle, daysRented, new ChildrensPricingStrategy(), new CollegeAgeNewReleaseFrequentRentalPointStrategy());
+        return new Rental(movieTitle, daysRented, new ChildrensPricingStrategy(),
+                new RegularFrequentRentalPointStrategy());
     }
 
     public int getDaysRented() {
         return _daysRented;
     }
-    
+
     public String getMovieTitle() {
         return _movieTitle;
     }
