@@ -11,7 +11,7 @@ import strategy.pricing.RentalPricingStrategy;
 public class Rental {
     private final String _movieTitle;
     private final int _daysRented;
-    private final RentalPricingStrategy _pricingStrategy;
+    private RentalPricingStrategy _pricingStrategy;
     private FrequentRentalPointStrategy _frequentRentalPointStrategy;
 
     private Rental(String movieTitle, int daysRented, RentalPricingStrategy pricingStrategy,
@@ -28,6 +28,14 @@ public class Rental {
 
     public void setFrequentRentalPointStrategy(FrequentRentalPointStrategy frequentRentalPointStrategy) {
         _frequentRentalPointStrategy = frequentRentalPointStrategy;
+    }
+
+    public RentalPricingStrategy getPricingStrategy() {
+        return _pricingStrategy;
+    }
+
+    public void setPricingStrategy(RentalPricingStrategy pricingStrategy) {
+        _pricingStrategy = pricingStrategy;
     }
 
     public static Rental createRegularRental(String movieTitle, int daysRented) {
