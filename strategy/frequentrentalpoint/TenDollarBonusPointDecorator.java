@@ -11,10 +11,6 @@ public class TenDollarBonusPointDecorator implements FrequentRentalPointStrategy
 
     @Override
     public int computeFrequentRentalPoints(Rental rental) {
-        int points = _baseStrategy.computeFrequentRentalPoints(rental);
-        if (rental.computeRentalPrice() >= 10) {
-            points += 10;
-        }
-        return points;
+        return _baseStrategy.computeFrequentRentalPoints(rental) + 10;
     }
 }

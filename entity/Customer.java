@@ -27,14 +27,8 @@ public class Customer {
     }
 
     public void addTransaction(Transaction transaction) {
-        for (Rental rental : transaction.getRentals()) {
-            if (_age >= 18 && _age <= 22 && rental.computeRentalPrice() > 0) {
-                rental.setFrequentRentalPointStrategy(
-                        new YouthFrequentRentalPointDecorator(rental.getFrequentRentalPointStrategy()));
-            }
-            _rentals.add(rental);
-            _totalAmount += rental.computeRentalPrice();
-        }
+        _rentals.addAll(transaction.getRentals());
+        _totalAmount += transaction.computeTotalPrice();
         _totalFrequentRenterPoints += transaction.computeTotalPoints();
     }
 
@@ -52,6 +46,10 @@ public class Customer {
 
     public String getName() {
         return _name;
+    }
+
+    public int getAge() {
+        return _age;
     }
 
     public ArrayList<Rental> getRentals() {
@@ -100,5 +98,4 @@ public class Customer {
         result.append("</statement>\n");
         return result.toString();
     }
-
 }
