@@ -19,7 +19,7 @@ public class Main {
                 )
         );
 
-        // Transaction with 4 rentals -> earns 20 bonus points (Policy B)
+        // Transaction with 4 rentals -> earns 20 bonus points
         Transaction t1 = new Transaction(c);
         t1.addRental(Rental.createChildrensRental("Finding Nemo", 4));
         t1.addRental(Rental.createNewReleaseRental("Iron Lung", 2));
