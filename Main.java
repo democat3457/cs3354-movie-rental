@@ -36,9 +36,10 @@ public class Main {
         c2.addTransaction(t2);
         c2.printStatements();
 
-        // Demonstrating free movie redemption (Policy C: 10 points -> free movie)
+        // Demonstrating free movie redemption (10 points -> free movie)
         Customer c3 = new Customer("Jane Smith", 30);
-        // Add a transaction so Jane earns at least 10 points (4 rentals = 20 bonus points)
+        // Add a transaction so Jane earns at least 10 points (4 rentals = 20 bonus
+        // points)
         Transaction t3 = new Transaction(c3);
         t3.addRental(Rental.createRegularRental("Mamma Mia", 1));
         t3.addRental(Rental.createRegularRental("The Wizard of Oz", 1));
