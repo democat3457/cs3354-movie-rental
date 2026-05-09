@@ -26,14 +26,28 @@ public class Customer {
         System.out.println();
     }
 
-    public void addRental(Rental rental) {
-        if (_age >= 18 && _age <= 22) {
-            rental.setFrequentRentalPointStrategy(
-                    new YouthFrequentRentalPointDecorator(rental.getFrequentRentalPointStrategy()));
+    public void addTransaction(Transaction transaction) {
+        for (Rental rental : transaction.getRentals()) {
+            if (_age >= 18 && _age <= 22 && rental.computeRentalPrice() > 0) {
+                rental.setFrequentRentalPointStrategy(
+                        new YouthFrequentRentalPointDecorator(rental.getFrequentRentalPointStrategy()));
+            }
+            _rentals.add(rental);
+            _totalAmount += rental.computeRentalPrice();
         }
-        _rentals.add(rental);
-        _totalAmount += rental.computeRentalPrice();
-        _totalFrequentRenterPoints += rental.computeFrequentRentalPoints();
+        _totalFrequentRenterPoints += transaction.computeTotalPoints();
+    }
+
+    public void redeemFreeMovie(Rental rental) throws IllegalStateException {
+        if (_totalFrequentRenterPoints >= 10) {
+            // Implemented this way to ensure frequent rental points must be taken away
+            _totalFrequentRenterPoints -= 10;
+            rental.setPricingStrategy(r -> 0); // Set price to 0 with an anonymous strategy with a lambda
+            rental.setFrequentRentalPointStrategy(r -> 0); // This transaction shouldn't receive any frequent rental
+            // points before decorators
+        } else {
+            throw new IllegalStateException("Customer does not have enough points for a free movie");
+        }
     }
 
     public String getName() {

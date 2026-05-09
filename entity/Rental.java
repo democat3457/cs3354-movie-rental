@@ -73,6 +73,9 @@ public class Rental {
     }
 
     public int computeFrequentRentalPoints() {
+        if (computeRentalPrice() == 0) {
+            return 0;
+        }
         return _frequentRentalPointStrategy.computeFrequentRentalPoints(this);
     }
 
